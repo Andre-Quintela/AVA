@@ -1,0 +1,6 @@
+@AVA.api_HostAddress = http://localhost:5232
+
+GET {{AVA.api_HostAddress}}/User/
+Accept: application/json
+
+###
