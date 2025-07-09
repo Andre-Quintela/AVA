@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AVA.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace AVA.Infrastructure.Context
 {
@@ -7,8 +8,7 @@ namespace AVA.Infrastructure.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-
-        // Add DbSet properties for your entities here, e.g.:  
-        // public DbSet<User> Users { get; set; }  
+        
+         public DbSet<User> Users { get; set; }  
     }
 }
