@@ -85,7 +85,7 @@ https://localhost:5001/swagger
 ---
 
 ### ⚡ Rodar com banco InMemory (opcional)
-Se você não quer configurar SQL Server agora, altere o DI:
+Se você não quer configurar o banco agora, altere o DI:
 
 📁 `AVA.Infrastructure.IOC/DependencyInjection.cs`
 ```csharp
