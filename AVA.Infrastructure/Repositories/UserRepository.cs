@@ -1,13 +1,22 @@
 ﻿using AVA.Domain.Entities;
 using AVA.Domain.Interfaces;
+using AVA.Infrastructure.Context;
 
 namespace AVA.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task AddUserAsync(User user)
+        private readonly ApplicationDbContext _context;
+
+        public UserRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+
+        public async Task CreateUserAsync(User user)
+        {
+            await _context.Users.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         public Task DeleteUserAsync(Guid id)

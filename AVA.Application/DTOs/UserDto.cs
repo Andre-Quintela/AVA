@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AVA.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace AVA.Application.DTOs
 {
     public class UserDto
     {
-        public required Guid id { get; set; }
-        public required string Name { get; set; }
-        public required string Email { get; set; }
-        public required string Role { get; set; }
+        public Guid Id { get; set; }
+        public string? Name { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public UserRole Role { get; set; }
     }
 }

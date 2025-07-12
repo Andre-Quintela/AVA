@@ -1,15 +1,35 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using AVA.Application.DTOs;
+using AVA.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AVA.Api.Controllers
 {
-    [ApiController]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
-        [HttpGet("GetAll")]
-        public Task<IActionResult> GetAll()
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
         {
-            return Task.FromResult<IActionResult>(Ok("TEST"));
+            _userService = userService;
         }
+
+        [HttpPost("CreateUser")]
+        public async Task<IActionResult> CreateUser([FromBody] UserDto userDto)
+        {
+            if (userDto == null)
+            {
+                return BadRequest("User data is null");
+            }
+            try
+            {
+                await _userService.CreateUserAsync(userDto);
+                return Ok("User created successfully");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 }
