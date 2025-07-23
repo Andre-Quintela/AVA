@@ -9,13 +9,13 @@ import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    LoginComponent
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
