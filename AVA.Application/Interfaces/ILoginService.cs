@@ -14,6 +14,6 @@ namespace AVA.Application.Interfaces
         /// </summary>
         /// <param name="loginDto">The login data transfer object containing user credentials.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains a boolean indicating whether the validation was successful.</returns>
-        Task<bool> ValidateUserAsync(LoginDto loginDto);
+        Task<UserDto?> ValidateUserAsync(LoginDto loginDto);
     }
 }

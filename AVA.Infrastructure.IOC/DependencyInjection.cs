@@ -21,6 +21,7 @@ namespace AVA.Infrastructure.IOC
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<JwtTokenGenerator>();
 
             // Repositories
             services.AddScoped<IUserRepository, UserRepository>();

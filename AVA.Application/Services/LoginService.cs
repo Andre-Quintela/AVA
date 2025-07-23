@@ -22,7 +22,7 @@ namespace AVA.Application.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<bool> ValidateUserAsync(LoginDto loginDto)
+        public async Task<UserDto?> ValidateUserAsync(LoginDto loginDto)
         {
             var loginUser = new User
             {
@@ -33,10 +33,19 @@ namespace AVA.Application.Services
 
             if (storedUser?.PasswordHash == null)
             {
-                return false;
+                return null; // User not found or password hash is null
             }
 
-            return _passwordHasher.VerifyPassword(storedUser.PasswordHash, loginDto.Password);
+            if(_passwordHasher.VerifyPassword(storedUser.PasswordHash, loginDto.Password))
+            {
+                return new UserDto
+                {
+                    Email = storedUser.Email,
+                    Role = storedUser.Role
+                };
+            };
+
+            return null; // Password does not match
         }
     }
 }
