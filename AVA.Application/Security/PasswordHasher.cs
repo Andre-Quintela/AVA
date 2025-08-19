@@ -29,15 +29,14 @@ namespace AVA.Application.Security
             };
 
             using var argon2 = new Argon2(config);
-            var hashBytes = argon2.Hash(); // 🔥 generates the hash (SecureArray<byte>)  
+            var hashBytes = argon2.Hash();
 
-            // Fix: Convert SecureArray<byte> to byte[] before passing to EncodeString  
             return config.EncodeString(hashBytes.Buffer);
         }
 
         public bool VerifyPassword(string hashedPassword, string password)
         {
-            return Argon2.Verify(hashedPassword, password); // ✅ Isopoh handles verification  
+            return Argon2.Verify(hashedPassword, password); 
         }
 
         private byte[] GenerateSalt(int length)

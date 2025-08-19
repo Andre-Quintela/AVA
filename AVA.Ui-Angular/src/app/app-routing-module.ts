@@ -5,15 +5,15 @@ import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/login/login.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: 'unauthorized', component: UnauthorizedComponent },
 
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
-    // data: { roles: ['Admin', 'Professor', 'Aluno'] } // Todos podem acessar
+    canActivate: [AuthGuard],
+    data: { roles: ['Admin', 'Professor', 'Aluno'] } // Todos podem acessar
   },
   // {
   //   path: 'admin',
@@ -22,7 +22,7 @@ const routes: Routes = [
   //   data: { roles: ['Admin'] }
   // },
   // Wildcard para página 404
-  // { path: '**', redirectTo: '/home' }
+  { path: '**', redirectTo: '/home' }
 ];
 
 

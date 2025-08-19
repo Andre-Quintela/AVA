@@ -4,7 +4,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona dependências do projeto
+// Dependency Injection
 builder.Services.AddInfrastructureDependencies(builder.Configuration);
 
 builder.Services.AddAuthentication("Bearer")
@@ -26,7 +26,7 @@ builder.Services.AddAuthentication("Bearer")
     });
 
 
-// Configura CORS (política padrão)
+// Configure CORS (política padrão)
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
